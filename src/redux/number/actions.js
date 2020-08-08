@@ -4,38 +4,54 @@ export function zero(){
   return { type: actionTypes.ZERO };
 }
 
-export function one(payload){
-  return { type: actionTypes.ONE, payload: payload };
+export function one() {
+  return { type: actionTypes.ONE };
 }
 
-export function two(payload){
-  return { type: actionTypes.TWO, payload: payload };
+export function two() {
+  return { type: actionTypes.TWO };
 }
 
-export function three(payload){
-  return { type: actionTypes.THREE, payload: payload };
+export function three() {
+  return { type: actionTypes.THREE };
 }
 
-export function four(payload){
-  return { type: actionTypes.FOUR, payload: payload };
+export function four() {
+  return { type: actionTypes.FOUR };
 }
 
-export function five(payload){
-  return { type: actionTypes.FIVE, payload: payload };
+export function five() {
+  return { type: actionTypes.FIVE };
 }
 
-export function six(payload){
-  return { type: actionTypes.SIX, payload: payload };
+export function six() {
+  return { type: actionTypes.SIX };
 }
 
-export function seven(payload){
-  return { type: actionTypes.SEVEN, payload: payload };
+export function seven() {
+  return { type: actionTypes.SEVEN };
 }
 
-export function eight(payload){
-  return { type: actionTypes.EIGHT, payload: payload };
+export function eight() {
+  return { type: actionTypes.EIGHT };
 }
 
-export function nine(payload){
-  return { type: actionTypes.NINE, payload: payload };
+export function nine() {
+  return { type: actionTypes.NINE };
+}
+
+export function switch_value() {
+  return { type: actionTypes.SWITCH_VALUE  };
+}
+
+export function equal(payload){
+  return { type: actionTypes.EQUAL, payload: payload };
+}
+
+export function clear(){
+  return { type: actionTypes.CLEAR };
+}
+
+export function del(payload){
+  return { type: actionTypes.DELETE, payload: payload };
 }

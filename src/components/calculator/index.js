@@ -1,33 +1,63 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styles from './calculator.module.css'
 
-import { equal, clean, del ,plus, subtract, multiply, divide, modulus } from '../../redux/operator/actions';
-import { zero, one, two ,three, four, five, six, seven, eight, nine } from '../../redux/number/actions';
+import { plus, subtract, multiply, divide, modulus,clear_operator } from '../../redux/operator/actions';
+import { zero, one, two ,three, four, five, six, seven, eight, nine, switch_value,equal, clear, del } from '../../redux/number/actions';
+import calculate from '../../help/calculate';
 
 class Calculator extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      previousValue : 0,
-      operator : '',
-      currentValue : 0
+
+    this.getData = this.getData.bind(this);
+  }
   
+  getData(){
+    const data = {
+      previousValue : this.props.previousValue*1, 
+      operator : this.props.operator, 
+      currentValue : this.props.currentValue*1
     }
-   
+    const result = calculate(data)
+    return result
   }
 
- 
-  
   render(){
+   
     return(
-      <div >
-        <div>
-          <input type="text" value={this.state.previousValue} />
-          <input type="text" value={this.state.operator} />
-          <input type="text" value={this.state.currentValue} />
+      <div className={styles.container}>
+        <div className={styles.showValue}>
+          <div>
+            <input readOnly type="text" value={this.props.previousValue} />
+            <input readOnly type="text" value={this.props.operator} />
+          </div>
+          <div>
+            <input readOnly type="text" value={this.props.currentValue} />
+          </div>    
         </div>
-        <div>
+        <div className={styles.operation}>
+          <div>
+            <button onClick={() => this.props.zero()}>0</button>
+            <button onClick={() => this.props.one()}>1</button>
+            <button onClick={() => this.props.two()}>2</button>
+            <button onClick={() => this.props.three()}>3</button>
+            <button onClick={() => this.props.four()}>4</button>
+            <button onClick={() => this.props.five()}>5</button>
+            <button onClick={() => this.props.six()}>6</button>
+            <button onClick={() => this.props.seven()}>7</button>
+            <button onClick={() => this.props.eight()}>8</button>
+            <button onClick={() => this.props.nine()}>9</button>
 
+            <button onClick={() => {this.props.equal(this.getData()); this.props.clear_operator()}}>=</button>
+            <button onClick={() => {this.props.clear(); this.props.clear_operator()}}>C</button>
+            <button onClick={() => {this.props.del()}}>Del</button>
+            <button onClick={() => {this.props.plus(); this.props.switch_value()}}>+</button>
+            <button onClick={() => {this.props.subtract(); this.props.switch_value()}}>-</button>
+            <button onClick={() => {this.props.multiply(); this.props.switch_value()}}>x</button>
+            <button onClick={() => {this.props.divide(); this.props.switch_value()}}>/</button>
+            <button onClick={() => {this.props.modulus(); this.props.switch_value()}}>%</button>
+          </div>
         </div>
       </div>
     )
@@ -36,13 +66,36 @@ class Calculator extends Component {
 
 const mapStateToProps = state => {
   return  {
-   
+    previousValue : state.number.previousValue,
+    currentValue : state.number.currentValue,
+    operator : state.operator.operator,
   }
 }
+//{previousValue : this.props.previousValue, operator : this.props.operator, currentValue : this.props.currentValue}
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    zero: () => dispatch(zero()),
+    one: () => dispatch(one()),
+    two: () => dispatch(two()),
+    three: () => dispatch(three()),
+    four: () => dispatch(four()),
+    five: () => dispatch(five()),
+    six: () => dispatch(six()),
+    seven: () => dispatch(seven()),
+    eight: () => dispatch(eight()),
+    nine: () => dispatch(nine()),
+    switch_value : () => dispatch(switch_value()),
+    
+    clear_operator: () => dispatch(clear_operator()),
+    equal: (data) => dispatch(equal(data)),
+    clear: () => dispatch(clear()),
+    del: () => dispatch(del()),
+    plus: () => dispatch(plus()),
+    subtract: () => dispatch(subtract()),
+    multiply: () => dispatch(multiply()),
+    divide: () => dispatch(divide()),
+    modulus: () => dispatch(modulus()),
   }
 }
 

@@ -1,8 +1,5 @@
 const actionTypes = {
-  EQUAL : 'EQUAL',
-  CLEAN : 'CLEAN',
-  DELETE : 'DELETE',
-
+  CLEAR_OPERATOR : 'CLEAR_OPERATOR',
   PLUS : 'PLUS',
   SUBTRACT : 'SUBTRACT',
   MULTIPLY :'MULTIPLY',

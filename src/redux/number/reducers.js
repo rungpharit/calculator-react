@@ -1,82 +1,98 @@
 import actionTypes from './types';
+import del from '../../help/delete';
 
 const initialState = {
-  previousValue : 0,
-  currentValue :0
+  previousValue : "",
+  currentValue : ""
 }
   
 function numberReducer(state = initialState,action){
   switch(action.type){
+
+    case actionTypes.EQUAL :
+      return {
+        previousValue : action.payload,
+        currentValue : ""
+      }; 
+
+    case actionTypes.CLEAR :
+      return {
+        previousValue : "",
+        currentValue : ""
+      };
+
+    case actionTypes.DELETE :
+      return {
+        ...state,
+        currentValue : del(state.currentValue)
+      }
     
     case actionTypes.ZERO :
-      return ; //maybe not in here
+      return {
+        ...state,
+        currentValue : state.currentValue + '0'
+      }; 
 
     case actionTypes.ONE :
-      console.log("payload: ",action.payload)
       return {
         ...state,
-        users : [
-          ...state.users,
-          {
-            ...action.payload
-          }
-        ]
-      };
+        currentValue : state.currentValue + '1'
+      }; 
 
     case actionTypes.TWO :
-      return ;
-
-    case actionTypes.PLUS :
       return {
         ...state,
-        disabled : !state.disabled
-      };
+        currentValue : state.currentValue + '2'
+      }; ;
 
     case actionTypes.THREE :
-      state.users.splice(action.payload,1)
       return {
         ...state,
-        users :[
-          ...state.users
-        ]
-      };
+        currentValue : state.currentValue + '3'
+      }; 
+      
     case actionTypes.FOUR :
-      state.users.splice(action.payload,1)
       return {
         ...state,
-        users :[
-          ...state.users
-        ]
-      };
+        currentValue : state.currentValue + '4'
+      }; 
 
     case actionTypes.FIVE :
-      state.users.splice(action.payload,1)
-      return {
+      return{
         ...state,
-        users :[
-          ...state.users
-        ]
-      };
+        currentValue : state.currentValue + '5'
+      }; 
+
     case actionTypes.SIX :
-    return {
-      ...state,
-      disabled : !state.disabled
-    };
+      return{
+        ...state,
+        currentValue : state.currentValue + '6'
+      }; 
+
     case actionTypes.SEVEN :
       return {
         ...state,
-        disabled : !state.disabled
-      };
+        currentValue : state.currentValue + '7'
+      }; 
+
     case actionTypes.EIGHT :
       return {
         ...state,
-        disabled : !state.disabled
-      };
+        currentValue : state.currentValue + '8'
+      }; 
+
     case actionTypes.NINE :
       return {
         ...state,
-        disabled : !state.disabled
+        currentValue : state.currentValue + '9'
+      }; 
+
+    case actionTypes.SWITCH_VALUE :
+      return {
+        previousValue : state.currentValue,
+        currentValue : ''
       };
+
     default:
       return state;
   }

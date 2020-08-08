@@ -9,6 +9,11 @@ const actionTypes = {
   SEVEN : 'SEVEN',
   EIGHT : 'EIGHT',
   NINE : 'NINE',
+
+  SWITCH_VALUE : 'SWITCH_VALUE',
+  EQUAL : 'EQUAL',
+  CLEAR : 'CLEAR',
+  DELETE : 'DELETE',
 }
 
 export default actionTypes;
