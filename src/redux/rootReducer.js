@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import activityReducer from './activity/reducers';
+import numberReducer from './number/reducers';
+import operatorReducer from './operator/reducers';
 
 const rootReducer = combineReducers({
-  activity : activityReducer
+  number : numberReducer,
+  operator : operatorReducer
 })
 
 export default rootReducer;

@@ -8,6 +8,9 @@ class Calculator extends Component {
   constructor(props){
     super(props);
     this.state = {
+      previousValue : 0,
+      operator : '',
+      currentValue : 0
   
     }
    
@@ -17,8 +20,15 @@ class Calculator extends Component {
   
   render(){
     return(
-      <div className={style.container}>
-      
+      <div >
+        <div>
+          <input type="text" value={this.state.previousValue} />
+          <input type="text" value={this.state.operator} />
+          <input type="text" value={this.state.currentValue} />
+        </div>
+        <div>
+
+        </div>
       </div>
     )
   }
