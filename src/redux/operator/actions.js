@@ -4,6 +4,10 @@ export function clear_operator(){
   return { type: actionTypes.CLEAR_OPERATOR };
 }
 
+export function add_operator(payload){
+  return { type: actionTypes.ADD_OPERATOR, payload : payload };
+}
+
 export function plus(){
   return { type: actionTypes.PLUS };
 }

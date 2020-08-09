@@ -1,15 +1,16 @@
+import actionTypes from '../redux/operator/types'
 
 function calculate(data){
   switch(data.operator){
-    case '+':
+    case actionTypes.PLUS:
       return data.previousValue + data.currentValue 
-    case '-' :
+    case actionTypes.SUBTRACT :
       return data.previousValue - data.currentValue 
-    case '*' :
+    case actionTypes.MULTIPLY :
       return data.previousValue * data.currentValue 
-    case '/' :
+    case actionTypes.DIVIDE :
       return data.previousValue / data.currentValue 
-    case '%' :
+    case actionTypes.MODULUS :
       return data.previousValue % data.currentValue 
   }
 

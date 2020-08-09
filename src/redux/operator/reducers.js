@@ -1,40 +1,58 @@
 import actionTypes from './types';
 
 const initialState = {
-  operator : ""
+  operator : "",
+  actionType : ""
 }
   
 function operatorReducer(state = initialState,action){
   switch(action.type){
-    
+   
     case actionTypes.CLEAR_OPERATOR :
       return {
+        ...state,
         operator : ""
       };
 
+    case actionTypes.ADD_OPERATOR :
+      return {
+        ...state,
+        operator : action.payload
+      };  
+
     case actionTypes.PLUS :
       return {
-        operator : '+'
+        ...state,
+        operator : '+',
+        actionType : action.type
       };
 
     case actionTypes.SUBTRACT :
       return {
-        operator : '-'
+        ...state,
+        operator : '-',
+        actionType : action.type
       };
 
     case actionTypes.MULTIPLY :
       return {
-        operator : '*'
+        ...state,
+        operator : '*',
+        actionType : action.type
       };
 
     case actionTypes.DIVIDE :
       return {
-        operator : '/'
+        ...state,
+        operator : '/',
+        actionType : action.type
       };
 
     case actionTypes.MODULUS :
     return{
-      operator : '%'
+      ...state,
+      operator : '%',
+      actionType : action.type
     };
 
     default:

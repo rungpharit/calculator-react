@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './calculator.module.css'
 
-import { plus, subtract, multiply, divide, modulus,clear_operator } from '../../redux/operator/actions';
+import { plus, subtract, multiply, divide, modulus,clear_operator,add_operator } from '../../redux/operator/actions';
 import { zero, one, two ,three, four, five, six, seven, eight, nine, switch_value,equal, clear, del } from '../../redux/number/actions';
 import calculate from '../../help/calculate';
 
@@ -11,20 +11,30 @@ class Calculator extends Component {
     super(props);
 
     this.getData = this.getData.bind(this);
+    this.checkValue = this.checkValue.bind(this);
   }
   
   getData(){
     const data = {
       previousValue : this.props.previousValue*1, 
-      operator : this.props.operator, 
+      operator : this.props.actionType, 
       currentValue : this.props.currentValue*1
     }
+    console.log(data)
     const result = calculate(data)
     return result
   }
 
+  checkValue(){
+    if(this.props.previousValue === ""){
+      this.props.switch_value() ; 
+    }else{
+      this.props.add_operator()
+
+    }
+  }
+
   render(){
-   
     return(
       <div className={styles.container}>
         <div className={styles.showValue}>
@@ -51,12 +61,12 @@ class Calculator extends Component {
 
             <button onClick={() => {this.props.equal(this.getData()); this.props.clear_operator()}}>=</button>
             <button onClick={() => {this.props.clear(); this.props.clear_operator()}}>C</button>
-            <button onClick={() => {this.props.del()}}>Del</button>
-            <button onClick={() => {this.props.plus(); this.props.switch_value()}}>+</button>
-            <button onClick={() => {this.props.subtract(); this.props.switch_value()}}>-</button>
-            <button onClick={() => {this.props.multiply(); this.props.switch_value()}}>x</button>
-            <button onClick={() => {this.props.divide(); this.props.switch_value()}}>/</button>
-            <button onClick={() => {this.props.modulus(); this.props.switch_value()}}>%</button>
+            <button onClick={() => { this.checkValue(); this.props.del() }}>Del</button>
+            <button onClick={() => { this.checkValue(); this.props.plus() }}>+</button>
+            <button onClick={() => { this.checkValue(); this.props.subtract(); }}>-</button>
+            <button onClick={() => { this.checkValue(); this.props.multiply(); }}>x</button>
+            <button onClick={() => { this.checkValue(); this.props.divide(); }}>/</button>
+            <button onClick={() => { this.checkValue(); this.props.modulus(); }}>%</button>
           </div>
         </div>
       </div>
@@ -69,9 +79,9 @@ const mapStateToProps = state => {
     previousValue : state.number.previousValue,
     currentValue : state.number.currentValue,
     operator : state.operator.operator,
+    actionType : state.operator.actionType,
   }
 }
-//{previousValue : this.props.previousValue, operator : this.props.operator, currentValue : this.props.currentValue}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -96,6 +106,7 @@ const mapDispatchToProps = dispatch => {
     multiply: () => dispatch(multiply()),
     divide: () => dispatch(divide()),
     modulus: () => dispatch(modulus()),
+    add_operator : () => dispatch(add_operator())
   }
 }
 
