@@ -87,6 +87,12 @@ function numberReducer(state = initialState,action){
         currentValue : state.currentValue + '9'
       }; 
 
+    case actionTypes.DOT :
+      return {
+        ...state,
+        currentValue : state.currentValue + '.'
+      }; 
+
     case actionTypes.SWITCH_VALUE :
       return {
         previousValue : state.currentValue,

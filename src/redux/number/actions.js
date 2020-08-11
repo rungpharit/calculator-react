@@ -40,6 +40,10 @@ export function nine() {
   return { type: actionTypes.NINE };
 }
 
+export function dot() {
+  return { type: actionTypes.DOT };
+}
+
 export function switch_value() {
   return { type: actionTypes.SWITCH_VALUE  };
 }

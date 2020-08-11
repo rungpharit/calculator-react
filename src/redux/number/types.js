@@ -9,6 +9,7 @@ const actionTypes = {
   SEVEN : 'SEVEN',
   EIGHT : 'EIGHT',
   NINE : 'NINE',
+  DOT : 'DOT',
 
   SWITCH_VALUE : 'SWITCH_VALUE',
   EQUAL : 'EQUAL',

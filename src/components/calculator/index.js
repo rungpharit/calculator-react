@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styles from './calculator.module.css'
 
 import { plus, subtract, multiply, divide, modulus,clear_operator,add_operator } from '../../redux/operator/actions';
-import { zero, one, two ,three, four, five, six, seven, eight, nine, switch_value,equal, clear, del } from '../../redux/number/actions';
+import { dot, zero, one, two ,three, four, five, six, seven, eight, nine, switch_value,equal, clear, del } from '../../redux/number/actions';
 import calculate from '../../help/calculate';
 
 class Calculator extends Component {
@@ -58,6 +58,7 @@ class Calculator extends Component {
             <button onClick={() => this.props.seven()}>7</button>
             <button onClick={() => this.props.eight()}>8</button>
             <button onClick={() => this.props.nine()}>9</button>
+            <button onClick={() => this.props.dot()}>.</button>
 
             <button onClick={() => {this.props.equal(this.getData()); this.props.clear_operator()}}>=</button>
             <button onClick={() => {this.props.clear(); this.props.clear_operator()}}>C</button>
@@ -95,6 +96,7 @@ const mapDispatchToProps = dispatch => {
     seven: () => dispatch(seven()),
     eight: () => dispatch(eight()),
     nine: () => dispatch(nine()),
+    dot: () => dispatch(dot()),
     switch_value : () => dispatch(switch_value()),
     
     clear_operator: () => dispatch(clear_operator()),
