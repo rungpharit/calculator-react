@@ -16,9 +16,9 @@ class Calculator extends Component {
   
   getData(){
     const data = {
-      previousValue : this.props.previousValue*1, 
+      previousValue : parseFloat(this.props.previousValue), 
       operator : this.props.actionType, 
-      currentValue : this.props.currentValue*1
+      currentValue : parseFloat(this.props.currentValue)
     }
     console.log(data)
     const result = calculate(data)
