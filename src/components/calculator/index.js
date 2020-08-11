@@ -48,27 +48,40 @@ class Calculator extends Component {
         </div>
         <div className={styles.operation}>
           <div>
-            <button onClick={() => this.props.zero()}>0</button>
-            <button onClick={() => this.props.one()}>1</button>
-            <button onClick={() => this.props.two()}>2</button>
-            <button onClick={() => this.props.three()}>3</button>
-            <button onClick={() => this.props.four()}>4</button>
-            <button onClick={() => this.props.five()}>5</button>
-            <button onClick={() => this.props.six()}>6</button>
+            <button onClick={() => {this.props.clear(); this.props.clear_operator()}}>C</button>
+            <button onClick={() => { this.checkValue(); this.props.del() }}>Del</button>
+            <button onClick={() => { this.checkValue(); this.props.modulus(); }}>MOD</button>
+            <button onClick={() => { this.checkValue(); this.props.divide(); }}>/</button>
+          </div>
+
+          <div>
             <button onClick={() => this.props.seven()}>7</button>
             <button onClick={() => this.props.eight()}>8</button>
             <button onClick={() => this.props.nine()}>9</button>
-            <button onClick={() => this.props.dot()}>.</button>
-
-            <button onClick={() => {this.props.equal(this.getData()); this.props.clear_operator()}}>=</button>
-            <button onClick={() => {this.props.clear(); this.props.clear_operator()}}>C</button>
-            <button onClick={() => { this.checkValue(); this.props.del() }}>Del</button>
-            <button onClick={() => { this.checkValue(); this.props.plus() }}>+</button>
-            <button onClick={() => { this.checkValue(); this.props.subtract(); }}>-</button>
             <button onClick={() => { this.checkValue(); this.props.multiply(); }}>x</button>
-            <button onClick={() => { this.checkValue(); this.props.divide(); }}>/</button>
-            <button onClick={() => { this.checkValue(); this.props.modulus(); }}>%</button>
           </div>
+
+          <div>
+            <button onClick={() => this.props.four()}>4</button>
+            <button onClick={() => this.props.five()}>5</button>
+            <button onClick={() => this.props.six()}>6</button>
+            <button onClick={() => { this.checkValue(); this.props.subtract(); }}>-</button>
+          </div>
+
+          <div>
+            <button onClick={() => this.props.one()}>1</button>
+            <button onClick={() => this.props.two()}>2</button>
+            <button onClick={() => this.props.three()}>3</button>
+            <button onClick={() => { this.checkValue(); this.props.plus() }}>+</button>
+
+          </div>
+
+          <div>
+            <button onClick={() => this.props.zero()}>0</button>
+            <button onClick={() => this.props.dot()}>.</button>
+            <button onClick={() => {this.props.equal(this.getData()); this.props.clear_operator()}}>=</button>
+          </div>
+
         </div>
       </div>
     )
