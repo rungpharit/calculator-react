@@ -37,7 +37,7 @@ function operatorReducer(state = initialState,action){
     case actionTypes.MULTIPLY :
       return {
         ...state,
-        operator : '*',
+        operator : 'x',
         actionType : action.type
       };
 
