@@ -1,0 +1,108 @@
+.container{
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  font-weight: 600;
+}
+.titleHead{
+  text-align: center;
+  font-size: 2em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color:#0779e4 ;
+  border-radius: 25px;
+  color: white;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.showValue{
+  display: flex;
+  flex-direction: column;
+}
+input[type="text"]{
+  font-size: 1em;
+  padding: 0.5em;
+  text-align: right;
+  color:gray;
+  border: none;
+}
+input[type="text"]:focus{
+  outline: none;
+  border: orange solid 1px;
+}
+
+
+.top input[type="text"]:nth-child(1){
+  width: 70%;
+  box-sizing: border-box;
+  
+}
+
+.top input[type="text"]:nth-child(2){
+  width: 30%;
+  box-sizing: border-box;
+}
+
+.bottom input[type="text"]:nth-child(1){
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  color: #333333;
+}
+
+.operation{
+  width: 100%;
+}
+.button {
+  display: flex;
+
+}
+
+
+.numberColor {
+  border: none;
+  background-color: white;
+  width: 25%;
+  padding: 1em;
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.numberColor:hover{
+  background-color: #333333;
+  color: white;
+}
+.redColor {
+  border: none;
+  background-color: white;
+  width: 25%;
+  padding: 1em;
+  color: red;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
+.redColor:hover{
+  background-color: red;
+  color: white;
+}
+
+.blueColor{
+  border: none;
+  background-color: white;
+  width: 25%;
+  padding: 1em;
+  color: #0779e4;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
+
+.blueColor:hover{
+background-color: #0779e4;
+color: white;
+}
+

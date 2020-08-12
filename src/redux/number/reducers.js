@@ -1,5 +1,6 @@
 import actionTypes from './types';
 import del from '../../help/delete';
+import minus from '../../help/minus';
 
 const initialState = {
   previousValue : "",
@@ -98,6 +99,12 @@ function numberReducer(state = initialState,action){
         previousValue : state.currentValue,
         currentValue : ''
       };
+
+      case actionTypes.MINUS_SIGN :
+        return {
+        ...state,
+        currentValue : minus(state.currentValue)
+      }
 
     default:
       return state;

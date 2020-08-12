@@ -15,6 +15,7 @@ const actionTypes = {
   EQUAL : 'EQUAL',
   CLEAR : 'CLEAR',
   DELETE : 'DELETE',
+  MINUS_SIGN : 'MINUS_SIGN',
 }
 
 export default actionTypes;

@@ -59,3 +59,7 @@ export function clear(){
 export function del(payload){
   return { type: actionTypes.DELETE, payload: payload };
 }
+
+export function minus_sign(payload){
+  return { type: actionTypes.MINUS_SIGN, payload: payload };
+}

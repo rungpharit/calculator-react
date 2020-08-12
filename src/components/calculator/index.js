@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styles from './calculator.module.css'
 
 import { plus, subtract, multiply, divide, modulus,clear_operator,add_operator } from '../../redux/operator/actions';
-import { dot, zero, one, two ,three, four, five, six, seven, eight, nine, switch_value,equal, clear, del } from '../../redux/number/actions';
+import { dot, zero, one, two ,three, four, five, six, seven, eight, nine, switch_value,equal, clear, del ,minus_sign} from '../../redux/number/actions';
 import calculate from '../../help/calculate';
 
 class Calculator extends Component {
@@ -37,49 +37,54 @@ class Calculator extends Component {
   render(){
     return(
       <div className={styles.container}>
+        <div className={styles.titleHead}>
+            CALCULATOR
+        </div>
         <div className={styles.showValue}>
-          <div>
-            <input readOnly type="text" value={this.props.previousValue} />
-            <input readOnly type="text" value={this.props.operator} />
+          <div className={styles.top}>
+            <input readOnly type="text" value={this.props.previousValue}  />
+            <input readOnly type="text" value={this.props.operator}  />
           </div>
-          <div>
-            <input readOnly type="text" value={this.props.currentValue} />
+          <div className={styles.bottom}>
+            <input readOnly type="text" value={this.props.currentValue}  />
           </div>    
         </div>
         <div className={styles.operation}>
-          <div>
-            <button onClick={() => {this.props.clear(); this.props.clear_operator()}}>C</button>
-            <button onClick={() => { this.checkValue(); this.props.del() }}>Del</button>
-            <button onClick={() => { this.checkValue(); this.props.modulus(); }}>MOD</button>
-            <button onClick={() => { this.checkValue(); this.props.divide(); }}>/</button>
+          <div className={styles.btn}>
+            <button onClick={() => {this.props.clear(); this.props.clear_operator()}} className={styles.redColor}>C</button>
+            <button onClick={() => { this.checkValue(); this.props.del()}} className={styles.redColor}>Del</button>
+            <button onClick={() => { this.checkValue(); this.props.modulus(); }} className={styles.blueColor}>MOD</button>
+            <button onClick={() => { this.checkValue(); this.props.divide(); }}
+            className={styles.blueColor}>/</button>
           </div>
 
-          <div>
-            <button onClick={() => this.props.seven()}>7</button>
-            <button onClick={() => this.props.eight()}>8</button>
-            <button onClick={() => this.props.nine()}>9</button>
-            <button onClick={() => { this.checkValue(); this.props.multiply(); }}>x</button>
+          <div className={styles.btn}>
+            <button onClick={() => this.props.seven()} className={styles.numberColor}>7</button>
+            <button onClick={() => this.props.eight()} className={styles.numberColor}>8</button>
+            <button onClick={() => this.props.nine()} className={styles.numberColor}>9</button>
+            <button onClick={() => { this.checkValue(); this.props.multiply(); }} className={styles.blueColor}>x</button>
           </div>
 
-          <div>
-            <button onClick={() => this.props.four()}>4</button>
-            <button onClick={() => this.props.five()}>5</button>
-            <button onClick={() => this.props.six()}>6</button>
-            <button onClick={() => { this.checkValue(); this.props.subtract(); }}>-</button>
+          <div className={styles.btn}>
+            <button onClick={() => this.props.four()} className={styles.numberColor}>4</button>
+            <button onClick={() => this.props.five()} className={styles.numberColor}>5</button>
+            <button onClick={() => this.props.six()} className={styles.numberColor}>6</button>
+            <button onClick={() => { this.checkValue(); this.props.subtract(); }} className={styles.blueColor}>-</button>
           </div>
 
-          <div>
-            <button onClick={() => this.props.one()}>1</button>
-            <button onClick={() => this.props.two()}>2</button>
-            <button onClick={() => this.props.three()}>3</button>
-            <button onClick={() => { this.checkValue(); this.props.plus() }}>+</button>
+          <div className={styles.btn}>
+            <button onClick={() => this.props.one()} className={styles.numberColor}>1</button>
+            <button onClick={() => this.props.two()} className={styles.numberColor}>2</button>
+            <button onClick={() => this.props.three()} className={styles.numberColor}>3</button>
+            <button onClick={() => { this.checkValue(); this.props.plus() }}  className={styles.blueColor}>+</button>
 
           </div>
 
-          <div>
-            <button onClick={() => this.props.zero()}>0</button>
-            <button onClick={() => this.props.dot()}>.</button>
-            <button onClick={() => {this.props.equal(this.getData()); this.props.clear_operator()}}>=</button>
+          <div className={styles.btn}>
+            <button onClick={() => this.props.minus_sign()}  className={styles.redColor}>+/-</button>  
+            <button onClick={() => this.props.zero()} className={styles.numberColor}>0</button>
+            <button onClick={() => this.props.dot()} className={styles.numberColor}>.</button>
+            <button onClick={() => {this.props.equal(this.getData()); this.props.clear_operator()}}  className={styles.blueColor}>=</button>
           </div>
 
         </div>
@@ -121,7 +126,8 @@ const mapDispatchToProps = dispatch => {
     multiply: () => dispatch(multiply()),
     divide: () => dispatch(divide()),
     modulus: () => dispatch(modulus()),
-    add_operator : () => dispatch(add_operator())
+    add_operator : () => dispatch(add_operator()),
+    minus_sign : () => dispatch(minus_sign())
   }
 }
 

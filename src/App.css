@@ -1,0 +1,28 @@
+.App{
+  width: 20%;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border: #333333 solid 1px;
+  border-radius: 10px;
+  box-shadow: 7px 7px 20px 3px #333333;
+}
+
+@media (max-width:1300px){
+  .App{
+    width: 30%
+  }
+}
+
+@media (max-width:1000px){
+  .App{
+    width: 40%;
+  }
+}
+
+@media (max-width:700px){
+  .App{
+    width: 55%;
+  }
+}
+
